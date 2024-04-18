@@ -2,5 +2,5 @@
 
 for i in {1..20} # It will loop from 1 to 20
 do
-  echo $id
+  echo $i
 done  
