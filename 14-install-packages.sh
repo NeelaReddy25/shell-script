@@ -32,10 +32,11 @@ do
    echo "Package to install: $i"
    dnf list installed $i &>>$LOGFILE
    if [ $? -eq 0 ]
-then
-    echo "$i already installed...SKIPPING"
-else
-    echo "$i not installed...Need to install"
-fi    
+   then
+       echo -e "$i already installed...$Y SKIPPING $N"
+    else
+        dnf install $i -y &>>$LOGFILE
+        VAILDATE $? "Installation of $i"
+    fi    
 done   
 
