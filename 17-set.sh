@@ -2,9 +2,11 @@
 
 set -e 
 
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
+
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ]
+if [ $USERID -ne 0 ] #ERR
 then 
     echo "Please run this script with root access."
     exit 1 # manually exit if error comes.
