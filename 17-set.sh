@@ -18,7 +18,7 @@ else
     echo "you are super user."
 fi
 
-dnf install mysssql -y 
+dnf install mysql -y 
 dnf install git -y 
 
 echo "is script proceeding?"
