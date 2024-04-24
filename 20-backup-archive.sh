@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-SOURCE_DIRECTORY=/folder
+SOURCE_DIRECTORY=/tmp/folder
 DESTINATION_DIRECTORY=/backups
 TIMESTAMP=$(date +%F-%H-%M-%S)
 BACKUP_FILENAME="${DESTINATION_DIRECTORY}/backup_${TIMESTAMP}.tar.gz"
@@ -30,7 +30,7 @@ tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
 
 if [ $? -eq 0 ] 
 then
-    echo -e "Backup ....$G SUCCESS. Archive saved as: $backup_filename $N"
+    echo -e "Backup ....$G SUCCESS. Archive saved as: $BACKUP_FILENAME $N"
 else
     echo -e "Backup....$R FAILURE $N"
 fi
