@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # Defining variables
-SOURCE_DIRECTORY=/tmp/backups
-DESTINATION_DIRECTORY=/tmp
+SOURCE_DIRECTORY=/tmp
+DESTINATION_DIRECTORY=/backups
 TIMESTAMP=$(date +%F-%H-%M-%S)
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-TARFILE="$DESTINATION_DIRECTORY"_$SCRIPT_NAME-$TIMESTAMP.tar.gz
+TARFILE="backup_$TIMESTAMP.tar.gz"
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+
+mkdir -p "$DESTINATION_DIRECTORY/$TIMESTAMP"
 
 if [ -d $DESTINATION_DIRECTORY ]
 then
@@ -20,7 +21,7 @@ else
 fi    
 
 # Archive the source diretory
-tar -czf "$DESTINATION_DIRECTORY/$TARFILE" "$SOURCE_DIRECTORY"
+tar -czf "$DESTINATION_DIRECTORY/$TIMESTAMP/$TARFILE" "$SOURCE_DIRECTORY"
 
 
 if [ $? -eq 0 ]
