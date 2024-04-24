@@ -2,10 +2,10 @@
 
 # Defining variables
 SOURCE_DIRECTORY=/tmp/applog-files
-DESTINATION_DIRECTORY=/tmp/files-log
+DESTINATION_DIRECTORY=/tmp
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-TARFILE=/tmp/files-log/$SCRIPT_NAME-$TIMESTAMP.tar.gz
+TARFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.tar.gz
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
