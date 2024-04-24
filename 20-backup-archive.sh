@@ -2,10 +2,10 @@
 
 # Defining variables
 SOURCE_DIRECTORY=/tmp/applog-files
-DESTINATION_DIRECTORY=/tmp
+DESTINATION_DIRECTORY=/tmp/backups
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-TARFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.tar.gz
+TARFILE=/tmp/backups/$SCRIPT_NAME-$TIMESTAMP.tar.gz
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
@@ -20,12 +20,8 @@ else
 fi    
 
 # Archive the source diretory
-FILES=$(tar -czf "$DESTINATION_DIRECTORY/$TIMESTAMP/$TARFILE" "$SOURCE_DIRECTORY")
+tar -czf "$DESTINATION_DIRECTORY/$TIMESTAMP/$TARFILE" "$SOURCE_DIRECTORY"
 
-while IFS= read -r line
-do
-  echo "Archeving file: $line"
-done <<< $FILES
 
 if [ $? -eq 0 ]
 then 
