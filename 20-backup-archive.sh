@@ -20,14 +20,14 @@ else
 fi    
 
 # Archive the source diretory
-tar -czf "$DESTINATION_DIRECTORY/$TIMESTAMP/$TARFILE" "$SOURCE_DIRECTORY"
+tar -czf "$DESTINATION_DIRECTORY/$TARFILE" "$SOURCE_DIRECTORY"
 
 
 if [ $? -eq 0 ]
 then 
-    echo -e "$R Backup Failure: $SCRIPT_NAME $N"
+    echo -e "$R Backup Failure: $TARFILE $N"
 else
-    echo -e "$G Backup Success: $SCRIPT_NAME $N" 
+    echo -e "$G Backup Success: $TARFILE $N" 
 fi       
 
 
