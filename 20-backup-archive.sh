@@ -11,7 +11,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ -d $DESTINATION_DIRECTORY]
+if [ -d $DESTINATION_DIRECTORY ]
 then
     echo -e "$G Destination directory exists $N"
 else
