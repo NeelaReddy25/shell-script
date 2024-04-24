@@ -7,7 +7,6 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 TARFILE="backup_$TIMESTAMP.tar.gz"
 R="\e[31m"
 G="\e[32m"
-Y="\e[33m"
 N="\e[0m"
 
 mkdir -p "$DESTINATION_DIRECTORY/$TIMESTAMP"
