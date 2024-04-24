@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-SOURCE_DIRECTORY=/tmp
+SOURCE_DIRECTORY=/tmp/folder
 DESTINATION_DIRECTORY=/backups
 TIMESTAMP=$(date +%F-%H-%M-%S)
 BACKUP_FILENAME="${DESTINATION_DIRECTORY}/backup_${TIMESTAMP}.tar.gz"
