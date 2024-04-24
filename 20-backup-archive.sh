@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Defining variables
-SOURCE_DIRECTORY=/tmp
-DESTINATION_DIRECTORY=/backups
+SOURCE_DIRECTORY="/tmp"
+DESTINATION_DIRECTORY="/backups"
 TIMESTAMP=$(date +%F-%H-%M-%S)
 TARFILE="backup_$TIMESTAMP.tar.gz"
 R="\e[31m"
