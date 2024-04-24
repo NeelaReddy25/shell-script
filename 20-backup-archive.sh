@@ -2,7 +2,7 @@
 
 # Defining variables
 SOURCE_DIRECTORY=/tmp/applog-files
-DESTINATION_DIRECTORY=/backup
+DESTINATION_DIRECTORY=/backup-script
 TIMESTAMP=$(date +%F-%H-%M-%S)
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TARFILE="backup_$SCRIPT_NAME-$TIMESTAMP.tar.gz"
