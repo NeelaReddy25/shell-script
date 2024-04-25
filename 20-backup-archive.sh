@@ -24,6 +24,8 @@ then
 
 fi
 
+tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
+
 FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14 -exec rm {*.log} \;)
 
 while IFS= read -r line
@@ -31,8 +33,6 @@ do
   echo "Deleting file: $line"
   rm -rf $line
 done <<< $FILES
-
-tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
 
 
 if [ $? -eq 0 ] 
