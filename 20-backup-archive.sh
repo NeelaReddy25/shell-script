@@ -24,7 +24,7 @@ then
 
 fi
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
+FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14 -exec rm {*.log} \;)
 
 while IFS= read -r line
 do
