@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_DIRECTORY="/home/ec2-user/shell-script"
-DESTINATION_DIRECTORY="/home/ec2-user/shell-script/backups"
+DESTINATION_DIRECTORY="/home/ec2-user/shell-script/backups/"
 TIMESTAMP=$(date +%F-%H-%M-%S)
 BACKUP_FILENAME="${DESTINATION_DIRECTORY}/backup_${TIMESTAMP}.tar.gz"
 R="\e[31m"
