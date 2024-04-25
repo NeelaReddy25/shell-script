@@ -1,8 +1,7 @@
 #!/bin/bash
 
-
-SOURCE_DIRECTORY=/tmp/folder
-DESTINATION_DIRECTORY=/backups
+SOURCE_DIRECTORY=$1
+DESTINATION_DIRECTORY=$2
 TIMESTAMP=$(date +%F-%H-%M-%S)
 BACKUP_FILENAME="${DESTINATION_DIRECTORY}/backup_${TIMESTAMP}.tar.gz"
 R="\e[31m"
@@ -10,7 +9,7 @@ G="\e[32m"
 N="\e[0m"
 
 
-if [ -d SOURCE_DIRECTORY ] 
+if [ -d "SOURCE_DIRECTORY" ] 
 then
      echo -e "$G Source directory exists $N"
 else
