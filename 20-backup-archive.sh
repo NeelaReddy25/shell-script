@@ -26,7 +26,7 @@ fi
 
 tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14 -exec rm {*.log} \;)
+FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
 
 while IFS= read -r line
 do
