@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SOURCE_DIRECTORY=/home/ec2-user/shell-script/source
-DESTINATION_DIRECTORY=/home/ec2-user/shell-script/destination
+SOURCE_DIRECTORY=/tmp/applogs-files
+DESTINATION_DIRECTORY=/tmp/backups
 TIMESTAMP=$(date +%F-%H-%M-%S)
 BACKUP_FILENAME="${DESTINATION_DIRECTORY}/backup_${TIMESTAMP}.tar.gz"
 R="\e[31m"
@@ -23,6 +23,13 @@ then
     mkdir -p "$DESTINATION_DIRECTORY"
 
 fi
+
+FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
+
+while IFS= read -r line
+do
+  echo "Deleting file: $line"
+done <<< $FILES
 
 tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
 
