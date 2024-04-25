@@ -9,7 +9,7 @@ G="\e[32m"
 N="\e[0m"
 
 
-if [ -d SOURCE_DIRECTORY ] 
+if [ -d $SOURCE_DIRECTORY ] 
 then
      echo -e "$G Source directory exists $N"
 else
@@ -18,7 +18,7 @@ else
 fi
 
 
-if [ -d DESTINATION_DIRECTORY ] 
+if [ -d $DESTINATION_DIRECTORY ] 
 then
     mkdir -p "$DESTINATION_DIRECTORY"
 
