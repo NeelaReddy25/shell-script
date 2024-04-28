@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # Threshold for CPU usage
 THRESHOLD=80
