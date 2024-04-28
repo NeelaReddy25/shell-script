@@ -15,3 +15,5 @@ while read -r pid ppid cmd cpu ; do
     echo "Alert: Process with PID $pid ($cmd) is consuming $cpu% CPU."
   fi
 done <<< "$(echo "$TOP_PROCESSES" | tail -n +5)" # Skip the header row
+
+echo "Process with PID $pid is using $cpu% CPU, which is above the threshold of $THRESHOLD%" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
