@@ -22,3 +22,7 @@ TO="neelareddy.i25@gmail.com"
 else
 echo "Server CPU usage is in under threshold"
   fi
+
+echo -e "Message: $MESSAGE"
+
+echo "$MESSAGE" | mail -s "Disk Usage Alert" neelareddy.i10204@gmail.com
