@@ -7,11 +7,6 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 
-if [ "$#" -ne 1 ] 
-then
-    echo "Usage: $0 filename"
-    exit 1
-fi
 
 if [ ! -f "$filename" ] 
 then
