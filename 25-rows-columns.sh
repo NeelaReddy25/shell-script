@@ -29,4 +29,4 @@ END {
       printf "%s%s", a[j,i], (j==NR ? RS : FS)
     }
   }
-}' input.txt
+}' file.txt
