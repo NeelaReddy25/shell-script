@@ -1,20 +1,18 @@
 #!/bin/bash
 
-cpuuse=$(cat /proc/loadavg | awk '{print $3}' | cut -f 1 -d ".")
+PATH="/"
+HOSTNAME=$(hostname)
+CRITICAL=80
+WARNING=75
+CRITICALMAIL="neelareddy.i25@gmail.com"
+WARNINGMAIL="neelareddy.i10204@gmail.com"
+mkdir -d /var/log/cputilhist
+TIMESTAMP=$(date +%F-%H-%M-%S)
+LOGFILE=/var/log/cputilhist/cpusage-$TIMESTAMP.log
 
-if [ "$cpuuse" -ge 90 ] 
-then
-    SUBJECT="ATTENTION: CPU load is high on $(hostname) at $(date)"
-    MESSAGE="/tmp/Mail.out"
-    TO="neelareddy.i25@gmail.com"
-    echo "CPU current usage is: $cpuuse%" >> $MESSAGE
-    echo "" >> $MESSAGE
-    echo "+------------------------------------------------------------------+" >> $MESSAGE
-    echo "Top 20 processes consuming high CPU" >> $MESSAGE
-    ps --sort=-pcpu | head -n 6 >> $MESSAGE
-    mail -s "$SUBJECT" $TO < $MESSAGE
-fi
+touch $LOGFILE
 
-echo -e "Message: $MESSAGE"
-
-echo "$MESSAGE" | mail -s " Alert" neelareddy.i10204@gmail.com
+for path in $PATH
+do 
+    CPULOAD=`top -b -n 5 -d1 | grep "Cpu(s)" | tail -n1 | awk '{print $2}' | awk -F . '{print $1}'`
+    
