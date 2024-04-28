@@ -1,11 +1,10 @@
 #!/bin/bash
-
 cpuuse=$(cat /proc/loadavg | awk '{print $3}'|cut -f 1 -d ".")
 
 if [ "$cpuuse" -ge 90 ]; then
 SUBJECT="ATTENTION: CPU load is high on $(hostname) at $(date)"
 MESSAGE="/tmp/Mail.out"
-TO="neelareddy.i25@gmail.com"
+TO="neelareddy.i10204@gmail.com"
   echo "CPU current usage is: $cpuuse%" >> $MESSAGE
   echo "" >> $MESSAGE
   echo "+------------------------------------------------------------------+" >> $MESSAGE
@@ -19,9 +18,9 @@ TO="neelareddy.i25@gmail.com"
   echo "$(ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10)" >> $MESSAGE
   mail -s "$SUBJECT" "$TO" < $MESSAGE
   rm /tmp/Mail.out
-fi
-
-echo "Process with PID $pid is using $cpu% CPU, which is above the threshold of $THRESHOLD%" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
+else
+echo "Server CPU usage is in under threshold"
+  fi
 
 
 
