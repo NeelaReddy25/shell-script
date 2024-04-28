@@ -19,13 +19,6 @@ else
     exit 1
 fi
 
-
-if [ -d $DESTINATION_DIRECTORY ] 
-then
-    mkdir -p "$DESTINATION_DIRECTORY"
-
-fi
-
 tar -czvf "$BACKUP_FILENAME" "$SOURCE_DIRECTORY"
 
 
