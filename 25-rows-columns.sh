@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Convert Rows to Columns"
 awk '
 {
   for (i=1; i<=NF; i++) {
@@ -16,7 +17,7 @@ END {
   }
 }' file.txt
 
-
+echo "Convert Columns to Rows"
 awk '
 {
   for (i=1; i<=NF; i++) {
