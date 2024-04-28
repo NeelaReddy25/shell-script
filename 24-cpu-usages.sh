@@ -21,7 +21,7 @@ check_cpu_usage() {
   done 
 }
 
-echo "$MESSAGE" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
+echo "Process with PID $pid is using $cpu% CPU, which is above the threshold of $THRESHOLD%" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
 
 # Call the function
 check_cpu_usage
