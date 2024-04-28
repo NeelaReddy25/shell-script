@@ -13,3 +13,4 @@ END {
 }' file.txt
 
 
+paste -sd: < file.txt | column -t -s:
