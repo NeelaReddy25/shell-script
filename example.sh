@@ -21,9 +21,7 @@ TO="neelareddy.i25@gmail.com"
   echo "$(ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10)" >> $MESSAGE
   mail -s "$SUBJECT" "$TO" < $MESSAGE
   rm /tmp/Mail.out
-else
-echo "Server CPU usage is in under threshold"
-  fi
+fi
 
 echo -e "Message: $MESSAGE"
 
