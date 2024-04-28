@@ -11,7 +11,7 @@ check_cpu_usage() {
   echo ""
 
   # Read the output, line by line, skipping the first line (headers)
-  ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 6 | tail -n +2 | while read -r pid ppid cmd cpu mem ; do
+  ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 6 | tail -n +5 | while read -r pid ppid cmd cpu mem ; do
     # Check if CPU usage of the process is greater than the threshold
     cpu_usage=$(echo "$cpu" | awk '{print int($1+2)}')
     folder=$(echo "$cpu" | awk '{print int($1+n)}')
