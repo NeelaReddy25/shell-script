@@ -11,7 +11,7 @@ send_alert() {
 }
 
 # Get the top 5 CPU-consuming processes
-top_processes=$(ps -eo pid,%cpu --sort=-%cpu | head -n 5)
+top_processes=$(ps -eo pid,%cpu --sort=-%cpu | head -n 6)
 
 # Skip the first line (headers)
 top_processes=$(echo "$top_processes" | sed 1d)
