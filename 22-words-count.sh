@@ -2,20 +2,16 @@
 
 #!/bin/bash
 
-filename="text.sh"
-R="\e[31m"
-G="\e[32m"
-N="\e[0m"
+filename="text.txt"
 
 
 if [ ! -f "$filename" ] 
 then
-    echo -e "$R File does not exist $N"
+    echo "File '$filename' not found."
     exit 1
-else
-    echo -e "$G File is exist $N"    
 fi
 
-word_count=$(wc -w < "$filename")
+word_count=$(tr -s '[:space:]' '\n' < "$filename" | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | grep -v '^$' | sort | uniq -c | sort -nr)
 
-echo  "The number of words in $filename is: $word_count | head -n 5 "
+echo "Top 5 Most Frequent Words:"
+echo "$word_count" | head -n 5 | awk '{print $2 " - " $1 " occurrences"}'
