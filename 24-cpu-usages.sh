@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the CPU usage threshold
-THRESHOLD=75
+THRESHOLD=90
 MESSAGE=""
 
 # Function to get the top 5 CPU consuming processes and check against the threshold

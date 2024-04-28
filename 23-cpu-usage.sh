@@ -1,17 +1,19 @@
 #!/bin/bash
 
-# Define the CPU usage threshold
-THRESHOLD=80
+TIMESTAMP=$(date +%F-%H-%M-%S)
 
-# Get the top 5 CPU consuming processes
-TOP_PROCESSES=$(ps -eo pid,ppid,cmd,%cpu --sort=-%cpu | head -n 6)
+cpuuse=$(cat /proc/loadavg | awk '{print $3}' | cut -f 1 -d ".")
 
-echo "Top 5 CPU consuming processes:"
-echo "$TOP_PROCESSES"
+if [ "$cpuuse" -ge 90 ]; then
+    SUBJECT="ATTENTION: CPU load is high on $(hostname) at $(TIMESTAMP)"
+    MESSAGE="/tmp/Mail.out"
+    TO="neelareddy.i25@gmail.com"
+    echo "CPU current usage is: $cpuuse%" >> $MESSAGE
+    echo "" >> $MESSAGE
+    echo "+------------------------------------------------------------------+" >> $MESSAGE
+    echo "Top 20 processes consuming high CPU" >> $MESSAGE
+    ps --sort=-pcpu | head -n 6 >> $MESSAGE
+    mail -s "$SUBJECT" $TO < $MESSAGE
+fi
 
-# Check if any process exceeds the threshold
-while read -r pid ppid cmd cpu ; do
-  if [ $(echo "$cpu > $THRESHOLD" | bc) -ne 0 ]; then
-    echo "Alert: Process with PID $pid ($cmd) is consuming $cpu% CPU."
-  fi
-done <<< "$(echo "$TOP_PROCESSES" | tail -n +5)" # Skip the header row
+*/5 * * * * /usr/bin/cat /proc/loadavg | awk '{print $1}' | awk '{ if($1 > 80) printf("Current CPU Utilization is: %.2f%%\n"), $0;}' | mail -s "High CPU Alert" neelareddy.i10204@gmail.com
