@@ -23,6 +23,7 @@ TO="neelareddy.i25@gmail.com"
   rm /tmp/Mail.out
 fi
 
-echo -e "Message: $MESSAGE"
+echo "Process with PID $pid is using $cpu% CPU, which is above the threshold of $THRESHOLD%" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
 
-echo "*/5 * * * * /usr/bin/cat /proc/loadavg | awk '{print $1}' | awk '{ if($1 > 80) printf("Current CPU Utilization is: %.2f%\n"), $0;}' | mail -s "High CPU Alert" neelareddy.i10204@gmail.com"
+
+
