@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MESSAGE=""
+
 cpuuse=$(cat /proc/loadavg | awk '{print $3}'|cut -f 1 -d ".")
 
 if [ "$cpuuse" -ge 90 ]; then
@@ -25,4 +27,4 @@ echo "Server CPU usage is in under threshold"
 
 echo -e "Message: $MESSAGE"
 
-echo "$MESSAGE" | mail -s "Disk Usage Alert" neelareddy.i10204@gmail.com
+echo "*/5 * * * * /usr/bin/cat /proc/loadavg | awk '{print $1}' | awk '{ if($1 > 80) printf("Current CPU Utilization is: %.2f%\n"), $0;}' | mail -s "High CPU Alert" neelareddy.i10204@gmail.com"
