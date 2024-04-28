@@ -1,45 +1,24 @@
 #!/bin/bash
-# Name: monitor_cpu_usage.sh
-# Description: Script to check top cpu consuming process for 1 hour
 
-# Change the SECS to total seconds to monitor CPU usage.
-# UNIT_TIME is the interval in seconds between each sampling
+cpuuse=$(cat /proc/loadavg | awk '{print $3}'|cut -f 1 -d ".")
 
-
-function report_utilisation {
-  # Process collected data
-  echo
-  echo "CPU eaters :"
-
-  cat /tmp/cpu_usage.$$ | 
-awk '
-{ process[$1]+=$2; }
-END{
-  for(i in process)
-  {
-    printf("%-20s %s\n",i, process[i]) ;
-  }
-
-   }' | sort -nrk 2 | head
-
-# Remove the temporary log file
-rm /tmp/cpu_usage.$$
-exit 0
-}
-
-trap 'report_utilisation' INT
-
-SECS=3600
-UNIT_TIME=10
-
-STEPS=$(( $SECS / $UNIT_TIME ))
-
-echo "Watching CPU usage... ;"
-
-# Collect data in temp file
-for((i=0;i<$STEPS;i++)); do
-    ps -eocomm,pcpu | egrep -v '(0.0)|(%CPU)' >> /tmp/cpu_usage.$$
-    sleep $UNIT_TIME
-done
-
-report_utilisation
+if [ "$cpuuse" -ge 90 ]; then
+SUBJECT="ATTENTION: CPU load is high on $(hostname) at $(date)"
+MESSAGE="/tmp/Mail.out"
+TO="neelareddy.i25@gmail.com"
+  echo "CPU current usage is: $cpuuse%" >> $MESSAGE
+  echo "" >> $MESSAGE
+  echo "+------------------------------------------------------------------+" >> $MESSAGE
+  echo "Top 20 processes which consuming high CPU" >> $MESSAGE
+  echo "+------------------------------------------------------------------+" >> $MESSAGE
+  echo "$(top -bn1 | head -20)" >> $MESSAGE
+  echo "" >> $MESSAGE
+  echo "+------------------------------------------------------------------+" >> $MESSAGE
+  echo "Top 10 Processes which consuming high CPU using the ps command" >> $MESSAGE
+  echo "+------------------------------------------------------------------+" >> $MESSAGE
+  echo "$(ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10)" >> $MESSAGE
+  mail -s "$SUBJECT" "$TO" < $MESSAGE
+  rm /tmp/Mail.out
+else
+echo "Server CPU usage is in under threshold"
+  fi

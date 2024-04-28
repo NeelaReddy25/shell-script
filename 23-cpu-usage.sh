@@ -17,4 +17,4 @@ fi
 
 echo -e "Message: $MESSAGE"
 
-echo "$MESSAGE" | mail -s "Disk Usage Alert" neelareddy.i10204@gmail.com
+echo "$MESSAGE" | mail -s " Alert" neelareddy.i10204@gmail.com
