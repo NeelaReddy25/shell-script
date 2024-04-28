@@ -14,4 +14,4 @@ END {
 
 
 # Transpose rows and columns using rs
-rs -T < input.txt
+rs -T < file.txt
