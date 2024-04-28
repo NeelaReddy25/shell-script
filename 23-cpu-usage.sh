@@ -15,3 +15,6 @@ then
     mail -s "$SUBJECT" $TO < $MESSAGE
 fi
 
+echo -e "Message: $MESSAGE"
+
+echo "$MESSAGE" | mail -s "Disk Usage Alert" neelareddy.i10204@gmail.com
