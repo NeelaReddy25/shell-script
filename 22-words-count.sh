@@ -16,5 +16,5 @@ fi
 # echo "Top 5 Most Frequent Words:"
 # echo "$word_count" | head -n 5 | awk '{print $2 " - " $1 " occurrences"}'
 
-word=$(echo -n "$filename" | wc -w)
+word=$(echo -n "$text.txt" | wc -w)
 echo "Number of Words = $word" 
