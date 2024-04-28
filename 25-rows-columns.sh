@@ -11,3 +11,7 @@ END {
         }
     }
 }' file.txt
+
+
+# Transpose rows and columns using rs
+rs -T < input.txt
