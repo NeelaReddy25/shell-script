@@ -22,5 +22,9 @@ else
 echo "Server CPU usage is in under threshold"
   fi
 
+echo "Process with PID $pid is using $cpu% CPU, which is above the threshold of $THRESHOLD%" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
+
+
+
 
 
