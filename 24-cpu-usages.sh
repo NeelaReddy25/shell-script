@@ -15,7 +15,7 @@ check_cpu_usage() {
     # Check if CPU usage of the process is greater than the threshold
     cpu_usage=$(echo "$cpu" | awk '{print int($1+2)}')
     folder=$(echo "$cpu" | awk '{print int($1+n)}')
-    if (( $cpu_usage -ge $THRESHOLD )); then
+    if (( $cpu_usage > $THRESHOLD )); then
       MESSAGE+="$folder is more than $THERSHOLD, Current usage: $cpu_usage \n"
     fi
   done 
