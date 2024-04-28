@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "Convert Rows to Columns"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
+
+echo -e " $Y Convert Rows to Columns $N"
 awk '
 {
   for (i=1; i<=NF; i++) {
@@ -17,7 +21,7 @@ END {
   }
 }' file.txt
 
-echo "Convert Columns to Rows"
+echo -e "$G Convert Columns to Rows $N"
 awk '
 {
   for (i=1; i<=NF; i++) {
