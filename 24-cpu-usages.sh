@@ -21,7 +21,7 @@ check_cpu_usage() {
   done 
 }
 
-echo "This is a test mail & Date $(date)"  | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
+echo "$MESSAGE" | mail -s "High CPU Usage Alert" neelareddy.i10204@gmail.com
 
 # Call the function
 check_cpu_usage
