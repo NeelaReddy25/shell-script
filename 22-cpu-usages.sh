@@ -9,7 +9,8 @@ check_cpu_usage() {
   ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 6
   echo ""
 
-  ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 6 | tail -n +5 | while read -r pid ppid cmd cpu mem ; do
+  ps -eo pid,ppid,cmd,%cpu,%mem --sort=-%cpu | head -n 6 | tail -n +5 | while read -r pid ppid cmd cpu mem 
+  do
     cpu_usage=$(echo "$cpu" | awk '{print int($1+2)}')
     folder=$(echo "$cpu" | awk '{print int($1+n)}')
     if (( $cpu_usage > $THRESHOLD )); then
