@@ -1,3 +1,5 @@
+#Convert rows into columns and columns into rows
+
 #!/bin/bash
 
 G="\e[32m"

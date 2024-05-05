@@ -1,3 +1,5 @@
+#diplay the top 5 cpu consuming process in linux, send alert if reaches more than thershold
+
 #!/bin/bash
 
 THRESHOLD=90
